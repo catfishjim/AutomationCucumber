@@ -30,8 +30,7 @@ public class Login {
 	}
 
 	@And("User enters a valid email {string}")
-	public void User_enters_a_valid_email(String email) {
-		
+	public void User_enters_a_valid_email(String email) {		
 		driver.findElement(By.id("1-email")).sendKeys(email);
 
 	}
@@ -43,11 +42,9 @@ public class Login {
 	
 	@And("User clicks login button")
 	public void user_clicks_login_button() {
-
 		driver.findElement(By.xpath("//span[@class='auth0-label-submit']")).click();
 	}
 	
-
 	@Then("User is successfully logged in")
 	public void user_is_successfully_logged_in() {
 		driver.findElement(By.xpath("/html//header[@id='hugo-header']//button[@type='button']//strong[.='Hi, James']")).click();
@@ -56,8 +53,7 @@ public class Login {
 	}
 
 	@And("User enters an invalid email {string}")
-	public void user_enters_an_invalid_email(String email) {
-		
+	public void user_enters_an_invalid_email(String email) {		
 		driver.findElement(By.id("1-email")).sendKeys(email);
 	}
 
@@ -66,10 +62,15 @@ public class Login {
 		driver.findElement(By.xpath("//input[@placeholder='your password']")).sendKeys(password);
 	}
 
-	@Then("User receives an Error message")
-	public void user_receives_an_error_message() {
-		
+	@Then("User receives an invalid email error message")
+	public void user_receives_an_invalid_email_error_message() {		
 		driver.findElement(By.xpath("//div[@class='auth0-lock-error-invalid-hint']"));
+
+	}
+	
+	@Then("User receives a wrong email or password error message")
+	public void user_receives_a_wrong_email_or_password_error_message() {		
+		driver.findElement(By.xpath("//span[contains(text(),'Wrong email or password.')]"));
 
 	}
 
@@ -89,9 +90,9 @@ public class Login {
 
 	}
 
-	@Then("User is given blank message")
-	public void user_is_given_blank_message() {
-		driver.findElement(By.xpath("//div[@id='auth0-lock-error-msg-password']//div[@class='auth0-lock-error-invalid-hint']"));
+	@Then("User is given email blank message")
+	public void user_is_given_email_blank_message() {
+		driver.findElement(By.xpath("//div[@id='auth0-lock-error-msg-passworddd']//div[@class='auth0-lock-error-invalid-hint']"));
 		
 	}
 }
